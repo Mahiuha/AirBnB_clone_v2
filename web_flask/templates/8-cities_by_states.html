@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<HTML lang="en">
+    <HEAD>
+        <TITLE>HBNB</TITLE>
+    </HEAD>
+    <BODY>
+      <H1>States</H1>
+      <UL>
+	{% for run in list1 %}
+        <LI>{{ run.id }}: <B>{{ run.name }}</B>
+          <UL>
+	    {% for i in list2 %}
+	    {% if i.state_id == run.id %}
+            <LI>{{ i.id }}: <B>{{ i.name }}</B></LI>
+	    {% endif %}
+	    {% endfor %}
+          </UL>
+        </LI>
+	{% endfor %}
+      </UL>
+    </BODY>
+</HTML>
