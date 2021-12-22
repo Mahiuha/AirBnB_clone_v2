@@ -61,9 +61,13 @@ class FileStorage:
             pass
 
     def delete(self, obj=None):
-        """Delete a object inside the dict objects."""
-        if obj is not None:
-            del self.__objects['{}.{}'.format(obj.__class__.__name__, obj.id)]
+        """Deletes obj if it's inside the attribute __objects
+        """
+        if obj:
+            key = "{}.{}".format(type(obj).__name__, obj.id)
+            if (key, obj) in self.__objects.items():
+                self.__objects.pop(key, None)
+        self.save()
 
     def close(self):
         """Deserializes the JSON file to objects"""
