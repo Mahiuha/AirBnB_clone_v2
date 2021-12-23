@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""test for file storage"""
+"""test for file storage."""
 import unittest
 import pep8
 import json
