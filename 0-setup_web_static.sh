@@ -1,3 +1,4 @@
+  GNU nano 4.8                                                              0-setup_web_static.sh                                                                        
 #!/usr/bin/env bash
 # sets up your web servers for the deployment of web_static
 apt-get -y update
@@ -9,7 +10,7 @@ echo "<html>
   <head>
   </head>
   <body>
-    Test Code
+    Holberton School
   </body>
 </html>" > /data/web_static/releases/test/index.html
 ln -sf /data/web_static/releases/test /data/web_static/current

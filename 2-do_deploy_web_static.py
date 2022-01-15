@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """
-Fabric script based on the file 1-pack_web_static.py that distributes an
-archive to the web servers
+Deploying tgz file to our servers
 """
 
 from fabric.api import put, run, env
 from os.path import exists
-env.hosts = ['35.227.5.245', '3.236.14.41']
+env.hosts = ['35.237.96.82', '54.164.136.88']
+env.user = 'ubuntu'
 
 
 def do_deploy(archive_path):
@@ -19,13 +19,13 @@ def do_deploy(archive_path):
         no_excep = filename.split(".")[0]
         path = "/data/web_static/releases/"
         put(archive_path, '/tmp/')
-        run('sudo mkdir -p {}{}/'.format(path, no_excep))
+        run('mkdir -p {}{}/'.format(path, no_excep))
         run('sudo tar -xzf /tmp/{} -C {}{}/'.format(filename, path, no_excep))
-        run('sudo rm /tmp/{}'.format(filename))
+        run('rm /tmp/{}'.format(filename))
         run('sudo mv {0}{1}/web_static/* {0}{1}/'.format(path, no_excep))
-        run('sudo rm -rf {}{}/web_static'.format(path, no_excep))
-        run('sudo rm -rf /data/web_static/current')
-        run('sudo ln -s {}{}/ /data/web_static/current'.format(path, no_excep))
+        run('rm -rf {}{}/web_static'.format(path, no_excep))
+        run('rm -rf /data/web_static/current')
+        run('ln -s {}{}/ /data/web_static/current'.format(path, no_excep))
         return True
-    except BaseException:
+    except Exception:
         return False
