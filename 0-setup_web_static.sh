@@ -1,4 +1,3 @@
-  GNU nano 4.8                                                              0-setup_web_static.sh                                                                        
 #!/usr/bin/env bash
 # sets up your web servers for the deployment of web_static
 apt-get -y update
